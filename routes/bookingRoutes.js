@@ -1,4 +1,5 @@
 const express = require("express");
+
 const {
   createBooking,
   updateBookingStatus,
@@ -8,7 +9,9 @@ const {
 const router = express.Router();
 
 router.post("/", createBooking);
+
 router.patch("/:id/status", updateBookingStatus);
+
 router.get("/", getBookingsByEmail);
 
 module.exports = router;
