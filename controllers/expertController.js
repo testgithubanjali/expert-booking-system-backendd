@@ -44,3 +44,15 @@ exports.getExpertById = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+exports.createExpert = async (req, res) => {
+  try {
+    const expert = await Expert.create(req.body);
+
+    res.status(201).json(expert);
+
+  } catch (error) {
+    res.status(500).json({
+      message: error.message
+    });
+  }
+};
