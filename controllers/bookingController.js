@@ -62,4 +62,18 @@ exports.updateBookingStatus = async (req, res) => {
     });
   }
 };
+exports.getBookingsByEmail = async (req, res) => {
+  try {
+    const bookings = await Booking.find({
+      email: req.query.email
+    }).populate("expertId");
+
+    res.json(bookings);
+
+  } catch (error) {
+    res.status(500).json({
+      message: error.message
+    });
+  }
+};
 
