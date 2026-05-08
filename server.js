@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const http = require("http");
-
+const errorHandler = require("./middleware/errorMiddleware");
 const connectDB = require("./config/db");
 const { initSocket } = require("./socket/socket");
 
@@ -26,7 +26,7 @@ app.use((req, res, next) => {
 
 app.use("/experts", require("./routes/expertRoutes"));
 app.use("/bookings", require("./routes/bookingRoutes"));
-
+app.use(errorHandler);
 server.listen(process.env.PORT, () => {
   console.log(`Server running on port ${process.env.PORT}`);
 });
